@@ -1,9 +1,11 @@
+import configparser
 import discord
 import psycopg2
 from itertools import islice
 
 client = discord.Client()
 PageSize = 10
+
 
 async def random_wtf(message, db, cnt):
     cnt = min(cnt, 42)
@@ -52,11 +54,6 @@ async def replace_wtf(message, db, keyword, wtf):
     cur.execute("DELETE FROM wtf WHERE keyword = %s", (keyword,))
     await append_to_wtf(bot, db, keyword, wtf)
 
-def get_db(bot):
-    host = 'localhost'
-    name = 'services_wtf'
-    user = 'services_wtf'
-    pswd = 'td+}sl6|ec#a6lvU/_lLuy_!+R/=zb'
 
     return psycopg2.connect(host = host, dbname = name, user = user, password = pswd)
 

@@ -5,7 +5,17 @@ from itertools import islice
 
 client = discord.Client()
 PageSize = 10
+config = configparser.ConfigParser()
+config.read('anusconf.cfg')
 
+def get_db()
+    wtf = config['wtf']
+    host = wtf['dbhost']
+    name = wtf['name']
+    user = wtf['user']
+    pswd = wtf['dbpass']
+   
+    return psycopg2.connect(host = host, dbname = name, user = user, password = pswd)  
 
 async def random_wtf(message, db, cnt):
     cnt = min(cnt, 42)
@@ -89,5 +99,6 @@ async def on_message(message):
 @client.event
 async def on_ready():
     print('logged in as {0.user}'.format(client))
-
-client.run('NjY0MDg2NjczOTA2MjA0NzEy.XhSPlw.tpTcQcttGRg8GYSWjBfg8lJBerE')
+    discord = config['discord']
+    apikey = discord['apikey']
+client.run(apikey)

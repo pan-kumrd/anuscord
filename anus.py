@@ -8,7 +8,7 @@ PageSize = 10
 config = configparser.ConfigParser()
 config.read('anusconf.cfg')
 
-def get_db()
+def get_db():
     wtf = config['wtf']
     host = wtf['dbhost']
     name = wtf['name']
